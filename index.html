@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#075E54">
+<title>WNDR</title>
+<style>
+:root{--green:#075e54;--green2:#128c7e;--light:#f0f2f5;--white:#fff;--text:#17202a;--muted:#667781;--blue:#34b7f1}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#e5ddd5;color:var(--text)}
+button,input{font:inherit}.screen{min-height:100dvh}.hidden{display:none!important}
+.login{min-height:100dvh;background:linear-gradient(160deg,#062e2a,#075e54 55%,#128c7e);display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:min(430px,100%);background:#fff;border-radius:28px;padding:30px 24px;box-shadow:0 20px 60px #0004;text-align:center}
+.logo{width:82px;height:82px;margin:auto;border-radius:25px;background:linear-gradient(135deg,#25d366,#075e54);display:grid;place-items:center;color:#fff;font-size:32px;font-weight:900;box-shadow:0 12px 28px #075e5440}
+h1{margin:18px 0 6px;font-size:36px;letter-spacing:2px}.sub{color:var(--muted);margin-bottom:26px}
+.field{position:relative;margin:12px 0}.field input{width:100%;padding:16px 48px 16px 14px;border:1px solid #d7dde1;border-radius:15px;outline:none;background:#f7f8f9}.field span{position:absolute;right:16px;top:15px;color:var(--muted)}
+.primary{width:100%;border:0;border-radius:15px;padding:16px;background:var(--green2);color:#fff;font-weight:800;margin-top:8px}.secondary{width:100%;border:1px solid #d5dcdf;border-radius:15px;padding:14px;background:#fff;color:var(--green);font-weight:700;margin-top:10px}
+.note{font-size:12px;color:#7a858b;line-height:1.6;margin-top:16px}
+.app{min-height:100dvh;display:flex;flex-direction:column;max-width:650px;margin:auto;background:#f0f2f5}
+.top{height:72px;background:var(--green);color:#fff;display:flex;align-items:center;padding:0 16px;gap:14px;box-shadow:0 2px 5px #0002}.avatar{width:45px;height:45px;border-radius:50%;background:#d9fdd3;color:var(--green);display:grid;place-items:center;font-weight:900}.top h2{font-size:20px;margin:0;flex:1}.icons{display:flex;gap:16px;font-size:22px}
+.tabs{display:flex;background:#075e54;color:#d7eeea}.tabs div{flex:1;text-align:center;padding:13px 5px;font-weight:700;font-size:13px}.tabs .active{color:#fff;border-bottom:3px solid #fff}
+.search{padding:10px;background:#f0f2f5}.search input{width:100%;border:0;border-radius:12px;padding:12px 16px;outline:none;background:#fff}
+.chats{flex:1}.chat{display:flex;gap:12px;padding:14px 16px;background:#fff;border-bottom:1px solid #e6e9eb;cursor:pointer}.chat:active{background:#f5f5f5}.chat .avatar{width:52px;height:52px;flex:none}.chatbody{flex:1;min-width:0}.row{display:flex;justify-content:space-between;gap:8px}.name{font-weight:800}.time{font-size:12px;color:var(--muted)}.preview{color:var(--muted);font-size:14px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fab{position:fixed;right:max(20px,calc((100vw - 650px)/2 + 20px));bottom:24px;width:58px;height:58px;border:0;border-radius:50%;background:#25d366;color:#fff;font-size:28px;box-shadow:0 5px 16px #0003}
+.chatview{min-height:100dvh;display:flex;flex-direction:column;background:#efe7dd}.chathead{height:68px;background:var(--green);color:#fff;display:flex;align-items:center;gap:12px;padding:0 12px}.back{border:0;background:transparent;color:#fff;font-size:28px}.chathead .avatar{width:42px;height:42px}.chatname{font-weight:800;flex:1}.messages{flex:1;padding:18px 12px;overflow:auto}.bubble{max-width:78%;padding:9px 11px;border-radius:10px;margin:7px 0;box-shadow:0 1px 1px #0001;line-height:1.5;font-size:15px}.in{background:#fff;margin-left:auto;border-top-right-radius:3px}.out{background:#d9fdd3;margin-right:auto;border-top-left-radius:3px}.composer{display:flex;gap:8px;padding:9px;background:#f0f2f5}.composer input{flex:1;border:0;border-radius:22px;padding:12px 16px;outline:none}.send{width:48px;border:0;border-radius:50%;background:var(--green2);color:#fff;font-size:20px}
+.profile{padding:20px}.section{background:#fff;border-radius:18px;margin-bottom:14px;overflow:hidden}.item{padding:16px;border-bottom:1px solid #eee}.item:last-child{border:0}.danger{color:#d32f2f}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#263238;color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;z-index:20}
+</style>
+</head>
+<body>
+<div id="login" class="screen login">
+  <div class="card">
+    <div class="logo">W</div>
+    <h1>WNDR</h1>
+    <div class="sub">تواصل بأمان وبساطة</div>
+    <div class="field"><span>👤</span><input id="user" placeholder="اسم المستخدم" autocomplete="username"></div>
+    <div class="field"><span>🔒</span><input id="pass" type="password" placeholder="كلمة المرور" autocomplete="current-password"></div>
+    <button class="primary" onclick="login()">دخول</button>
+    <button class="secondary" onclick="biometric()">🔐 الدخول بالبصمة / Face ID</button>
+    <div class="note">نسخة تجريبية للواجهة. لا ترسل بيانات حقيقية هنا؛ نظام الحسابات والدردشة المشفرة يحتاج خادمًا وقاعدة بيانات قبل النشر العام.</div>
+  </div>
+</div>
+
+<div id="home" class="screen app hidden">
+  <div class="top"><div class="avatar">W</div><h2>WNDR</h2><div class="icons">⌕　⋮</div></div>
+  <div class="tabs"><div class="active">الدردشات</div><div onclick="profile()">التحديثات</div><div onclick="profile()">المجتمع</div><div onclick="profile()">الإعدادات</div></div>
+  <div class="search"><input placeholder="🔎 بحث عن محادثة"></div>
+  <div id="chats" class="chats"></div>
+  <button class="fab" onclick="newChat()">＋</button>
+</div>
+
+<div id="chatview" class="screen chatview hidden">
+  <div class="chathead"><button class="back" onclick="goHome()">‹</button><div id="cavatar" class="avatar">A</div><div id="cname" class="chatname">أحمد</div><div>⋮</div></div>
+  <div id="messages" class="messages"></div>
+  <div class="composer"><input id="msg" placeholder="اكتب رسالة..." onkeydown="if(event.key==='Enter')send()"><button class="send" onclick="send()">➤</button></div>
+</div>
+
+<div id="profile" class="screen app hidden">
+ <div class="top"><button class="back" onclick="goHome()">‹</button><h2>الإعدادات</h2></div>
+ <div class="profile">
+  <div class="section"><div class="item"><b>الحساب</b><br><small>حماية الحساب وبيانات الدخول</small></div><div class="item">🔐 قفل التطبيق بالبصمة / Face ID</div><div class="item">🛡️ الخصوصية والأمان</div></div>
+  <div class="section"><div class="item">🔔 الإشعارات</div><div class="item">💬 إعدادات الدردشة</div><div class="item">📱 الأجهزة المرتبطة</div></div>
+  <div class="section"><div class="item">🚨 الإبلاغ عن مستخدم</div><div class="item">⛔ حظر مستخدم</div><div class="item danger" onclick="logout()">تسجيل الخروج</div></div>
+ </div>
+</div>
+
+<script>
+const demo=[
+ {name:"أحمد",letter:"أ",text:"مرحباً بك في WNDR 👋",time:"الآن",msgs:[["in","مرحباً بك في WNDR 👋"],["out","شكراً! الواجهة جميلة"],["in","هذه نسخة تجريبية للواجهة."]]},
+ {name:"سارة",letter:"س",text:"تم إرسال صورة",time:"14:20",msgs:[["in","أرسلت لك صورة 📷"]]},
+ {name:"محمد",letter:"م",text:"كيف حالك؟",time:"أمس",msgs:[["in","كيف حالك؟"],["out","بخير الحمد لله"]]}
+];
+let current=0;
+function login(){let u=document.getElementById('user').value.trim();let p=document.getElementById('pass').value;if(!u||!p){toast("أدخل اسم المستخدم وكلمة المرور");return}show('home');renderChats();toast("تم الدخول إلى النسخة التجريبية")}
+function biometric(){if(window.PublicKeyCredential){toast("يمكن ربط Face ID / البصمة فعلياً عند إضافة WebAuthn وخادم آمن")}else toast("ميزة البصمة تحتاج تطبيقاً أصلياً أو WebAuthn على نطاق آمن")}
+function renderChats(){document.getElementById('chats').innerHTML=demo.map((c,i)=>`<div class="chat" onclick="openChat(${i})"><div class="avatar">${c.letter}</div><div class="chatbody"><div class="row"><span class="name">${c.name}</span><span class="time">${c.time}</span></div><div class="preview">${c.text}</div></div></div>`).join("")}
+function openChat(i){current=i;let c=demo[i];document.getElementById('cavatar').textContent=c.letter;document.getElementById('cname').textContent=c.name;document.getElementById('messages').innerHTML=c.msgs.map(m=>`<div class="bubble ${m[0]}">${m[1]}</div>`).join("");show('chatview');setTimeout(()=>document.getElementById('messages').scrollTop=99999,20)}
+function send(){let x=document.getElementById('msg');let t=x.value.trim();if(!t)return;demo[current].msgs.push(["out",t]);demo[current].text=t;demo[current].time="الآن";x.value="";openChat(current)}
+function newChat(){toast("في النسخة الكاملة: إضافة جهة اتصال أو بدء محادثة جديدة")}
+function profile(){show('profile')}
+function goHome(){show('home');renderChats()}
+function logout(){show('login')}
+function show(id){['login','home','chatview','profile'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id))}
+function toast(t){let d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2600)}
+</script>
+</body>
+</html>
