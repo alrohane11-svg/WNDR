@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<title>WNDR</title>
+<style>
+:root{
+ --bg:#0b1220;--surface:#111a2b;--surface2:#172238;--line:#26344b;
+ --text:#f5f7fb;--muted:#8d9bb0;--accent:#5b8cff;--accent2:#7c5cff;
+ --mine:#24456a;--theirs:#182337;--danger:#ff5d6c;--online:#31d17c;
+}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#070c15;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;color:var(--text)}
+button,input{font:inherit}.app{max-width:430px;min-height:100vh;margin:auto;background:var(--bg);position:relative;overflow:hidden}
+.hidden{display:none!important}
+
+/* Login */
+.login{min-height:100vh;padding-top:92px;padding:46px 20px 30px;background:
+ radial-gradient(circle at 50% 12%,#24375d 0,#111a2b 28%,#0b1220 58%,#070c15 100%)}
+.brand{text-align:center}.logo{width:88px;height:88px;margin:8px auto 18px;border-radius:26px;
+background:linear-gradient(145deg,#6b8cff,#684fff);display:grid;place-items:center;font-size:43px;font-weight:900;
+box-shadow:0 18px 45px #0008;border:1px solid #ffffff22}.brand h1{margin:0;font-size:31px;letter-spacing:2px}.brand p{margin:8px 0 28px;color:#9ba9bd;font-size:14px}
+.card{background:#111a2bde;border:1px solid #ffffff12;border-radius:24px;padding:20px;box-shadow:0 22px 60px #0009;backdrop-filter:blur(18px)}
+.label{font-size:13px;font-weight:750;color:#aeb9c9;margin:10px 0 8px}.row{display:flex;gap:8px}.input{width:100%;border:1px solid var(--line);border-radius:14px;padding:14px;background:#0d1524;color:var(--text);outline:none;font-size:16px}
+.input:focus{border-color:#628cff;box-shadow:0 0 0 3px #5b8cff22}.country{width:92px}.phone{direction:ltr;text-align:left}
+.btn{width:100%;border:0;border-radius:14px;padding:14px;margin-top:10px;font-weight:800;cursor:pointer}.primary{color:#fff;background:linear-gradient(100deg,#5b8cff,#765bff)}.secondary{color:#dbe5ff;background:#18253d;border:1px solid #2b3b57}.biometric{background:#0d1524;color:#f3f6fb;border:1px solid #2b3b57}
+.note{font-size:11px;color:#748198;text-align:center;line-height:1.6;margin-top:13px}
+
+/* Main */
+.top{height:78px;margin-top:44px;padding:25px 15px 8px;background:linear-gradient(180deg,#111a2b,#0f1828);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff08}
+.title{font-size:22px;font-weight:850;letter-spacing:1px}.top-actions{display:flex;gap:2px}.top-actions button,.iconbtn{border:0;background:transparent;color:#aebbd0;font-size:23px;padding:7px;cursor:pointer}
+.search{padding:9px 13px 11px;background:#0f1828}.search input{width:100%;border:1px solid #202e45;background:#172238;color:#eef3fa;border-radius:13px;padding:11px 13px;outline:none}.search input::placeholder{color:#7d8ba0}
+.tabs{display:flex;background:#101a2a;border-bottom:1px solid #1d2a40}.tab{flex:1;text-align:center;padding:12px 5px;color:#75849a;font-size:13px;font-weight:800}.tab.active{color:#dce7ff;border-bottom:2px solid var(--accent)}
+.chatrow{display:flex;align-items:center;gap:12px;padding:14px 15px;background:#0f1828;border-bottom:1px solid #18253a;cursor:pointer}.chatrow:active{background:#162238}
+.avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(145deg,#263b61,#4b5f88);display:grid;place-items:center;color:#fff;font-weight:850;font-size:19px;flex:none;border:1px solid #ffffff0d}
+.chatinfo{flex:1;min-width:0}.name{font-weight:800;font-size:15px}.preview{color:#8190a5;font-size:13px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.time{font-size:11px;color:#6e7d93;margin-bottom:5px}.badge{background:#5b8cff;color:white;border-radius:20px;padding:3px 7px;font-size:10px}
+
+/* Chat */
+.chat{min-height:100vh;background:#0a111d;padding-bottom:72px}.chathead{height:76px;background:#111a2b;padding:25px 8px 7px;display:flex;align-items:center;gap:9px;border-bottom:1px solid #202d42}.back{border:0;background:none;color:#dbe4f1;font-size:31px}.smallavatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(145deg,#344c75,#637aa5);display:grid;place-items:center;font-weight:800}.online{font-size:10px;color:var(--online);margin-top:2px}
+.messages{padding:14px 12px}.bubble{max-width:80%;padding:9px 12px;border-radius:12px;margin:7px 0;line-height:1.5;font-size:14px;box-shadow:0 2px 8px #0003}.theirs{background:var(--theirs);margin-left:auto;border:1px solid #25334a}.mine{background:var(--mine);margin-right:auto;border:1px solid #315a84}
+.composer{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:430px;width:100%;padding:8px;background:#0e1726;border-top:1px solid #202d42;display:flex;gap:7px;z-index:5}.composer input{flex:1;border:1px solid #26344b;border-radius:22px;padding:11px 14px;background:#172238;color:#fff;outline:none}.send{width:46px;border:0;border-radius:50%;background:linear-gradient(135deg,#5b8cff,#765bff);color:white;font-size:18px}
+
+/* Bottom */
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:430px;width:100%;height:65px;background:#101a2aee;border-top:1px solid #26344b;display:flex;justify-content:space-around;align-items:center;z-index:4;backdrop-filter:blur(16px)}
+.nav{border:0;background:none;color:#708098;font-size:10px;font-weight:800}.nav b{display:block;font-size:20px;margin-bottom:2px}.nav.active{color:#8eabff}
+
+/* Settings/Admin */
+.panel{padding:15px 14px 88px}.section{color:#73829a;font-size:12px;font-weight:800;margin:19px 5px 8px}.setting{background:#111a2b;padding:16px;border-bottom:1px solid #1e2b40;display:flex;gap:12px;align-items:center;cursor:pointer}.setting:first-of-type{border-radius:15px 15px 0 0}.setting:last-of-type{border-radius:0 0 15px 15px}.setting b{display:block;font-size:14px}.setting span{display:block;color:#7f8da2;font-size:11px;margin-top:4px}
+.adminbar{background:#0e1726;padding:18px;border-bottom:1px solid #26344b}.admincard{background:#111a2b;margin:12px 14px;border-radius:16px;padding:15px;border:1px solid #1f2d43}.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px}.stat{background:#111a2b;border:1px solid #1f2d43;border-radius:15px;padding:14px}.stat b{font-size:24px}.stat span{display:block;color:#7f8da2;font-size:11px;margin-top:4px}.adminrow{padding:11px 0;border-bottom:1px solid #1e2b40;font-size:12px}.adminrow:last-child{border-bottom:0}.smallbtn{border:0;border-radius:9px;padding:7px 9px;margin:5px 3px 0;background:#1d2d49;color:#cfe0ff;font-weight:750;font-size:11px}.smallbtn.red{background:#351c24;color:#ff9ca7}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);background:#f4f7fb;color:#0b1220;padding:10px 15px;border-radius:20px;font-size:12px;display:none;z-index:20;box-shadow:0 8px 25px #0008;max-width:90%;text-align:center}
+
+.savebar{position:fixed;top:0;left:50%;transform:translateX(-50%);max-width:430px;width:100%;z-index:30;background:#0e1726ee;border-bottom:1px solid #26344b;padding:8px 12px;backdrop-filter:blur(14px);display:flex;gap:8px;align-items:center}
+.savebar button{border:1px solid #34445f;background:#172238;color:#fff;border-radius:10px;padding:8px 11px;font-size:12px;font-weight:800}
+.savebar .save{background:#5b8cff;border-color:#5b8cff}.savebar .close{margin-right:auto}
+</style>
+</head>
+<body>
+<div id="savebar" class="savebar">
+<button class="save" onclick="saveWNDR()">⬇ حفظ WNDR</button>
+<button onclick="downloadZIP()">📦 ZIP</button>
+<button class="close" onclick="document.getElementById('savebar').classList.add('hidden')">✕</button>
+</div><div class="app">
+
+<section id="login" class="login">
+<div class="brand"><div class="logo">W</div><h1>WNDR</h1><p>PRIVATE MESSAGING</p></div>
+<div class="card">
+<div class="label">رقم الهاتف</div>
+<div class="row"><input id="cc" class="input country" value="+49"><input id="phone" class="input phone" inputmode="tel" placeholder="Phone number"></div>
+<div class="label">كلمة السر</div><input id="pin" class="input" type="password" maxlength="6" inputmode="numeric" placeholder="••••••">
+<button class="btn primary" onclick="login()">تسجيل الدخول</button>
+<button class="btn secondary" onclick="createAccount()">إنشاء حساب</button>
+<button class="btn biometric" onclick="face()">◉  Face ID / البصمة</button>
+<div class="note">واجهة تجريبية. لا توجد خدمة خادم أو إرسال SMS في هذه النسخة.</div>
+</div></section>
+
+<section id="home" class="hidden">
+<div class="top"><div class="title">WNDR</div><div class="top-actions"><button onclick="toast('استخدم خانة البحث')">⌕</button><button onclick="show('settings')">⋮</button></div></div>
+<div class="search"><input placeholder="البحث عن محادثة أو جهة اتصال" oninput="render(this.value)"></div>
+<div class="tabs"><div class="tab active">الدردشات</div><div class="tab">الحالات</div><div class="tab">المكالمات</div></div>
+<div id="chats"></div></section>
+
+<section id="chat" class="chat hidden">
+<div class="chathead"><button class="back" onclick="show('home')">‹</button><div class="smallavatar">A</div><div style="flex:1"><b>أحمد</b><div class="online">متصل الآن</div></div><button class="iconbtn" onclick="reportUser()">⚑</button><button class="iconbtn" onclick="blockUser()">⋮</button></div>
+<div id="messages" class="messages"><div class="bubble theirs">مرحبًا 👋 كيف حالك؟</div><div class="bubble mine">أهلًا! بخير.</div><div class="bubble theirs">هذه محادثة تجريبية داخل WNDR.</div></div>
+<div class="composer"><input id="msg" placeholder="اكتب رسالة..." onkeydown="if(event.key==='Enter')send()"><button class="send" onclick="send()">➤</button></div></section>
+
+<section id="settings" class="hidden">
+<div class="top"><div class="title">الإعدادات</div><button class="iconbtn" onclick="show('home')">✕</button></div>
+<div class="panel">
+<div class="section">الحساب</div><div class="setting"><div class="avatar">W</div><div><b>حساب WNDR</b><span id="accountText">الملف الشخصي</span></div></div>
+<div class="section">الأمان والخصوصية</div>
+<div class="setting" onclick="toast('التحقق بخطوتين جاهز للربط بالخادم')">🔒<div><b>التحقق بخطوتين</b><span>طبقة حماية إضافية</span></div></div>
+<div class="setting" onclick="face()">◉<div><b>Face ID / البصمة</b><span>قفل التطبيق على الجهاز</span></div></div>
+<div class="setting" onclick="toast('التشفير الطرفي الحقيقي سيكون في التطبيق الأصلي')">🛡️<div><b>التشفير والخصوصية</b><span>إعدادات الأمان</span></div></div>
+<div class="section">الإشراف</div>
+<div class="setting" onclick="show('admin')">⚙<div><b>لوحة الإدارة</b><span>المستخدمون والبلاغات والحظر</span></div></div>
+</div></section>
+
+<section id="admin" class="hidden">
+<div class="adminbar"><button class="iconbtn" onclick="show('settings')">‹</button><b>WNDR ADMIN</b><div style="font-size:11px;color:#7f8da2;margin-top:4px">إدارة السلامة والمستخدمين</div></div>
+<div class="statgrid"><div class="stat"><b id="usersN">0</b><span>المستخدمون</span></div><div class="stat"><b id="reportsN">0</b><span>البلاغات</span></div></div>
+<div class="admincard"><b>البلاغات</b><div id="reports"></div></div><div class="admincard"><b>المستخدمون</b><div id="users"></div></div>
+</section>
+
+<div id="bottom" class="bottom hidden"><button class="nav active" onclick="show('home')"><b>⌂</b>الدردشات</button><button class="nav" onclick="toast('الحالات — معاينة')"><b>◉</b>الحالات</button><button class="nav" onclick="toast('المكالمات — معاينة')"><b>☎</b>المكالمات</button><button class="nav" onclick="show('settings')"><b>⚙</b>الإعدادات</button></div>
+<div id="toast" class="toast"></div>
+</div>
+<script>
+const chats=[["أحمد","هذه محادثة تجريبية داخل WNDR.","14:32","2"],["سارة","أرسلت صورة 📷","13:08","1"],["مجموعة WNDR","أنت: مرحبًا بالجميع","أمس",""],["محمد","مكالمة فائتة","أمس",""]];
+let reports=JSON.parse(localStorage.getItem("wndr_reports")||"[]"),users=JSON.parse(localStorage.getItem("wndr_users")||"[]");
+function show(id){document.querySelectorAll(".app>section").forEach(x=>x.classList.add("hidden"));document.getElementById(id).classList.remove("hidden");document.getElementById("bottom").classList.toggle("hidden",["login","chat","admin"].includes(id));if(id==="admin")renderAdmin()}
+function render(q=""){document.getElementById("chats").innerHTML=chats.filter(x=>x[0].includes(q)||x[1].includes(q)).map((x,i)=>`<div class="chatrow" onclick="${i===0?"show('chat')":"toast('فتح المحادثة — معاينة')"}"><div class="avatar">${x[0][0]}</div><div class="chatinfo"><div class="name">${x[0]}</div><div class="preview">${x[1]}</div></div><div><div class="time">${x[2]}</div>${x[3]?`<span class="badge">${x[3]}</span>`:""}</div></div>`).join("")}
+function save(){localStorage.setItem("wndr_reports",JSON.stringify(reports));localStorage.setItem("wndr_users",JSON.stringify(users))}
+function login(){let ph=document.getElementById("phone").value.trim(),pin=document.getElementById("pin").value.trim();if(!ph)return toast("أدخل رقم الهاتف");if(!/^\d{6}$/.test(pin))return toast("كلمة السر يجب أن تكون 6 أرقام");document.getElementById("accountText").textContent="حساب: "+document.getElementById("cc").value.trim()+" "+ph;show("home");render()}
+function createAccount(){let ph=document.getElementById("phone").value.trim();if(!ph)return toast("أدخل رقم الهاتف أولًا");users.push({phone:document.getElementById("cc").value.trim()+" "+ph,created:new Date().toLocaleString("ar")});save();document.getElementById("accountText").textContent="حساب: "+document.getElementById("cc").value.trim()+" "+ph;show("home");
+function saveWNDR(){
+  const blob=new Blob([document.documentElement.outerHTML],{type:"text/html;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="WNDR_Professional.html";
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  toast("تم تجهيز ملف WNDR للحفظ");
+}
+function downloadZIP(){
+  toast("لحفظ ZIP استخدم ملف ZIP المرفق أدناه؛ زر الحفظ هنا يحفظ نسخة HTML.");
+}
+
+render();toast("تم إنشاء حساب تجريبي")}
+function face(){toast("Face ID / البصمة هنا واجهة تجريبية؛ التفعيل الحقيقي يكون داخل تطبيق iPhone/Android")}
+function send(){let i=document.getElementById("msg"),v=i.value.trim();if(!v)return;i.value="";let d=document.createElement("div");d.className="bubble mine";d.textContent=v;document.getElementById("messages").appendChild(d)}
+function reportUser(){let r=prompt("سبب البلاغ:");if(!r)return;reports.push({user:"أحمد",reason:r,date:new Date().toLocaleString("ar")});save();toast("تم إرسال البلاغ للمراجعة")}
+function blockUser(){if(confirm("حظر هذا المستخدم؟"))toast("تم الحظر — معاينة")}
+function renderAdmin(){document.getElementById("usersN").textContent=users.length;document.getElementById("reportsN").textContent=reports.length;document.getElementById("reports").innerHTML=reports.length?reports.map((r,i)=>`<div class="adminrow"><b>${r.user}</b><br>${r.reason}<br><small>${r.date}</small><br><button class="smallbtn red" onclick="closeReport(${i})">إغلاق البلاغ</button><button class="smallbtn" onclick="toast('تمت إحالة المستخدم للمراجعة')">مراجعة</button></div>`).join(""):"<div class='adminrow'>لا توجد بلاغات.</div>";document.getElementById("users").innerHTML=users.length?users.map(u=>`<div class="adminrow"><b>${u.phone}</b><br><small>${u.created}</small></div>`).join(""):"<div class='adminrow'>لا يوجد مستخدمون تجريبيون.</div>"}
+function closeReport(i){reports.splice(i,1);save();renderAdmin()}
+function toast(t){let e=document.getElementById("toast");e.textContent=t;e.style.display="block";clearTimeout(window.tm);window.tm=setTimeout(()=>e.style.display="none",2400)}
+render();
+</script>
+</body></html>
